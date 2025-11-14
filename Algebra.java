@@ -25,43 +25,92 @@ public class Algebra {
 
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		for (int i = 0; i < x2; i++){
+			x1++;
+		}
+		for (int i = 0; i > x2; i--){
+			x1--;
+		}
+		return x1;
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		for (int i = 0; i < x2; i++){
+			x1--;
+		}
+		for (int i = 0; i > x2; i--){
+			x1++;
+		}
+		return x1;
 	}
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int product = 0;
+		if (x2 < 0) {
+			for (int i = 0; i > x2; i--){
+			product = minus(product, x1);
+		}
+		} else {
+			for (int i = 0; i < x2; i++){
+			product = plus(product, x1);
+		}
+		}
+
+			
+	
+		return product;
 	}
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
-		// Replace the following statement with your code
-		return 0;
+		int power = 1;
+		for (int i = 0; i < n; i++){
+			power = times(power, x);
+		}
+		return power;
 	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		boolean positive = true;
+		int quotient = 0;
+		if (x1 < 0) {
+			positive = !positive;
+			x1 = minus(0, x1);
+		}
+		if (x2 < 0) {
+			positive = !positive;
+			x2 = minus(0, x2);
+		}
+		while (x1 >= x2) {
+			x1 = minus(x1, x2);
+			quotient++;
+		}
+		if (!positive) {
+			quotient = minus(0, quotient);
+		}
+		return quotient;
 	}
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		while (x1 >= x2) {
+			x1 = minus(x1, x2);
+		}
+		return x1;
 	}	
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
-		// Replace the following statement with your code
-		return 0;
+		int n = 0;
+		int square = 0;
+		while (square <= x) {
+			n++;
+			square = times(n, n); 
+		}
+		n--;
+		return n;
 	}	  	  
 }
