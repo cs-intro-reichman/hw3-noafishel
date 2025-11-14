@@ -28,6 +28,9 @@ public class Algebra {
 		for (int i = 0; i < x2; i++){
 			x1++;
 		}
+		for (int i = 0; i > x2; i--){
+			x1--;
+		}
 		return x1;
 	}
 
@@ -36,15 +39,27 @@ public class Algebra {
 		for (int i = 0; i < x2; i++){
 			x1--;
 		}
+		for (int i = 0; i > x2; i--){
+			x1++;
+		}
 		return x1;
 	}
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
 		int product = 0;
-		for (int i = 0; i < x2; i++){
+		if (x2 < 0) {
+			for (int i = 0; i > x2; i--){
+			product = minus(product, x1);
+		}
+		} else {
+			for (int i = 0; i < x2; i++){
 			product = plus(product, x1);
 		}
+		}
+
+			
+	
 		return product;
 	}
 
@@ -59,10 +74,22 @@ public class Algebra {
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
+		boolean positive = true;
 		int quotient = 0;
+		if (x1 < 0) {
+			positive = !positive;
+			x1 = minus(0, x1);
+		}
+		if (x2 < 0) {
+			positive = !positive;
+			x2 = minus(0, x2);
+		}
 		while (x1 >= x2) {
 			x1 = minus(x1, x2);
 			quotient++;
+		}
+		if (!positive) {
+			quotient = minus(0, quotient);
 		}
 		return quotient;
 	}
